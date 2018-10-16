@@ -1,0 +1,107 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<html lang="es">
+    <head>
+      <link rel="icon" type="image/png" href="img/icons/favicon.ico"/>
+      <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+      <link rel="stylesheet" type="text/css" href="css/util.css">
+      <link rel="stylesheet" type="text/css" href="css/main.css">
+	<script src="./js/fire.js"></script>
+	<script>
+    var config = {
+    apiKey: "AIzaSyBZZ5MeNwP_mGa4jD1w5OXGaPbrgNO6R-g",
+    authDomain: "invitados-7fe3d.firebaseapp.com",
+    databaseURL: "https://invitados-7fe3d.firebaseio.com",
+    projectId: "invitados-7fe3d",
+    storageBucket: "invitados-7fe3d.appspot.com",
+    messagingSenderId: "846946400809"
+  };
+  firebase.initializeApp(config);
+  const dbRef = firebase.database().ref();
+  const usersRef = dbRef.child('users');
+  
+  function arrayJSON(nombre,telefono,correo){
+  var data = [nombre,telefono,correo];
+  return data;	   
+  }
+  
+  function getID(id){
+     return document.getElementById(id).value;
+  }
+    function insertTask(){
+	 var nombre = getID("name");
+	 var telefono = getID("company");
+	 var correo = getID("email");
+	 
+	 var arrayData = arrayJSON(nombre,telefono,correo);
+	  firebase.database().ref('Usuarios/' + nombre).set({
+    correo: correo,
+    tel: telefono,
+    nombre : nombre
+  });
+  }	    
+
+	    </script>
+    </head>
+
+
+    <div class="limiter">
+      <div class="container-login100">
+        <div class="wrap-login100">
+          <form class="login100-form validate-form" id="loginForm">
+            <span class="login100-form-title p-b-43">
+                <img src="img/resena.png" width="160px" height="110px"><br><br>
+              <h4>ACCESO A INTERNET</h4>
+            </span>					
+            <div class="wrap-input100 validate-input" data-validate = "Nombre es requerido">
+              <input class="input100" type="text" id="name">
+              <span class="focus-input100"></span>
+              <span class="label-input100">Nombre</span>
+            </div>
+            
+            <div class="wrap-input100 validate-input" data-validate = "Ingresa un correo valido: nombre@abc.com">
+              <input class="input100" type="text" id="email" name="email">
+              <span class="focus-input100"></span>
+              <span class="label-input100">Correo</span>
+            </div>
+            
+            <div class="wrap-input100 validate-input" data-validate="Número de teléfono requerido">
+              <input class="input100" type="text"  name="pass" id="company">
+              <span class="focus-input100"></span>
+              <span class="label-input100">Telefono</span>
+            </div>
+  
+            <div class="flex-sb-m w-full p-t-3 p-b-32">
+              <div class="contact100-form-checkbox">
+                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
+                <label class="label-checkbox100" for="ckb1">
+                  Acepto los terminos y condiciones del servicio
+                </label>
+              </div>						
+            </div>
+            <div class="container-login100-form-btn">
+              <button type="submit" class="login100-form-btn" onclick="insertTask()">
+                ACCEDER
+              </button>
+            </div>	
+          </form>
+  
+          <div class="login100-more" style="background-image: url('img/fondo-min.jpg');">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  <!--  <hr>
+    <h4>Debugging Stats</h4>
+    <p><label>Base Grant URL: </label><label id="baseGrantURL"></label></p>
+    <p><label>User Continue URL: </label><label id="userContinueURL"></label></p>
+    <p><label>Client IP: </label><label id="clientIP"></label></p>
+    <p><label>Client MAC: </label><label id="clientMAC"></label></p>
+    <p><label>Access Point MAC: </label><label id="nodeMAC"></label></p>-->
+
+    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="js/main.js"></script>
+	<script src="./js/meraki.js"></script>
+</html>
+
