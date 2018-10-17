@@ -2,11 +2,13 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <html lang="es">
     <head>
-      <link rel="icon" type="image/png" href="img/icons/favicon.ico"/>
-      <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
-      <link rel="stylesheet" type="text/css" href="css/util.css">
-      <link rel="stylesheet" type="text/css" href="css/main.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 	<script src="./js/fire.js"></script>
+	<script language="Javascript" type="text/javascript">
+      document.oncontextmenu = function(){return false}
+    </script>
 	<script>
     var config = {
     apiKey: "AIzaSyBZZ5MeNwP_mGa4jD1w5OXGaPbrgNO6R-g",
@@ -32,76 +34,98 @@
 	 var nombre = getID("name");
 	 var telefono = getID("company");
 	 var correo = getID("email");
-	 
+	 var terminos = document.getElementById("ter").checked;
 	 var arrayData = arrayJSON(nombre,telefono,correo);
+	    
+	if (nombre == "" || telefono == "" || correo == "" || terminos == false){
+		alert("Faltan Campos por llenar");
+	    }else{   
 	  firebase.database().ref('Usuarios/' + nombre).set({
     correo: correo,
     tel: telefono,
     nombre : nombre
   });
   }	    
-
+} 
 	    </script>
+        <link rel="stylesheet" type="text/css" href="./css/style.css">
     </head>
+    <div class="container">  
+        <!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Terminos y Condiciones</h4>
+        </div>
+        <div class="modal-body" style="overflow-y: scroll; height: 200px;">
+        <p class="text-justify small">
+			Medihelp Services solo recopila, conserva y utiliza información de personas conforme a las siguientes finalidades: para la prestación de los servicios asistenciales a los pacientes y familiares de estos, para validar la veracidad de los datos suministrados por personas aspirantes o vinculadas por algún tipo de relación laboral o comercial a la institución, para comunicar a sus grupos de interés información sobre los servicios institucionales, eventos, publicaciones y publicidades asociadas a temas de salud, para realizar procesos educativos en temas estratégicos, para el cumplimiento de las obligaciones legales, para la gestión de temas relacionados con habilitación y acreditación, para conocer de manera prospectiva las necesidades de sus grupos de interés con el fin de mejorar e innovar en la prestación de sus servicios.
+		</p>
+		<p class="text-regular text-justify small">
+			Como parte de la Responsabilidad Social asumida por la Clínica, es de suma importancia para la institución informar, capacitar o socializar a los distintos públicos de interés con los que interactúa (de acuerdo al caso) contenidos de interés en salud que les permitan obtener conocimiento seguro sobre distintas temáticas como enfermedades, tratamientos, estilos de vida saludables, eventos de interés en salud pública, etc, todos relacionados con el objeto social de la clínica. Sus datos personales de contacto son usados para hacer llegar a usted información relacionada con nuestra misión social, siendo para la clínica de suma importancia la protección y manejo de la información suministrada.
+		</p>
+		<p class="text-regular text-justify small">
+			El presente aviso se ajusta a los lineamientos descritos en el Manual Institucional para la Protección y Manejo de Datos Personales así como a la Ley 1581 de 2012 y el Decreto reglamentario 1377 de 2013.
+		</p>
+		<p class="text-regular text-justify small">
+			De igual forma vale la pena aclarar para el caso de pacientes y familiares, que este aviso hace referencia exclusiva a lo señalado arriba y no se relaciona con la información consignada en las historias clínicas, debido a que los datos y la información allí consignada conservan su carácter reservado, confidencial y totalmente privado.
+		</p>
+		<p class="text-regular text-justify small">
+			En el caso de considerar que sus datos personales contenidos en nuestra base de datos deben ser corregidos, actualizados o eliminados, o cuando advierta el presunto incumplimiento de cualquiera de los deberes contenidos en la ley, usted podrá dirigir su solicitud al correo info@clinicamedihelp.com o notificar por escrito la solicitud a la dirección Cra 6° No 5 - 10, barrio Bocagrande, indicando la siguiente información:
+		</p>
+		<ul class="text-regular small">
+			<li>Nombre completo y apellidos.</li>
+			<li>Copia del documento de identificación personal.</li>
+			<li>Indicación en el asunto: Solicitud de datos personales.</li>
+			<li>Especificar si la solicitud se trata de una consulta o reclamo, realizar una descripción de los hechos y demás detalles que considere relevantes.</li>
+			<li>El tipo de titular que es (paciente, colaborador. estudiante, aspirante, proveedor, cliente o usuario en general) Si se trata de un contratista o proveedor, deberá indicar la empresa a la que pertenece.</li>
+		</ul>
+		<p class="text-regular text-justify small">
+			Así mismo Medihelp Services informa y aclara que durante sus años de funcionamiento ha recopilado, conservado y utilizado datos personales de personas naturales y jurídicas con fines administrativos, laborales, educativos e informativos; y en la actualidad desea continuar con el tratamiento y la recolección a futuro de la información para los fines ya expresados, y para ello requiere de la autorización de los titulares de los mismos. 
+		</p>
+		<p class="text-regular text-justify small">
+			Debido a que los datos de contacto de estos titulares pueden estar desactualizados, incompletos, incorrectos o podrían ser inexactos, no es posible obtener la autorización de manera individual respecto de cada uno de estos; motivo por el cual la Clínica hace uso del mecanismo alterno consagrado en el artículo 10 del decreto 1377 de 2.013. En consecuencia, informamos que el tratamiento de la información, está sujeto al Manual para La Protección y Manejo de Datos Personales el cual está ajustado a la Ley 1581 de 2012 y el Decreto reglamentario 1377 de 2013; y el cual podrá ser consultado en nuestro sitio web www.clinicamedihelp.com y que se continuará con el tratamiento de la información para los fines indicados, salvo que el titular de los datos o información desee que se supriman los datos personales de los archivos de la Clínica, sin prejuicio de normas legales que dispongan lo contrario, y comunique su decisión, de manera directa, expresa, inequívoca y por escrito dentro de los treinta (30) días hábiles contados a partir de la recepción de la presente comunicación.
+		</p>
 
-
-    <div class="limiter">
-      <div class="container-login100">
-        <div class="wrap-login100">
-          <form class="login100-form validate-form" id="loginForm">
-            <span class="login100-form-title p-b-43">
-                <img src="img/resena.png" width="160px" height="110px"><br><br>
-              <h4>ACCESO A INTERNET</h4>
-            </span>					
-            <div class="wrap-input100 validate-input" data-validate = "Nombre es requerido">
-              <input class="input100" type="text" id="name">
-              <span class="focus-input100"></span>
-              <span class="label-input100">Nombre</span>
-            </div>
-            
-            <div class="wrap-input100 validate-input" data-validate = "Ingresa un correo valido: nombre@abc.com">
-              <input class="input100" type="text" id="email" name="email">
-              <span class="focus-input100"></span>
-              <span class="label-input100">Correo</span>
-            </div>
-            
-            <div class="wrap-input100 validate-input" data-validate="Número de teléfono requerido">
-              <input class="input100" type="text"  name="pass" id="company">
-              <span class="focus-input100"></span>
-              <span class="label-input100">Telefono</span>
-            </div>
-  
-            <div class="flex-sb-m w-full p-t-3 p-b-32">
-              <div class="contact100-form-checkbox">
-                <input class="input-checkbox100" id="ckb1" type="checkbox" name="remember-me">
-                <label class="label-checkbox100" for="ckb1">
-                  Acepto los terminos y condiciones del servicio
-                </label>
-              </div>						
-            </div>
-            <div class="container-login100-form-btn">
-              <button type="submit" class="login100-form-btn" onclick="insertTask()">
-                ACCEDER
-              </button>
-            </div>	
-          </form>
-  
-          <div class="login100-more" style="background-image: url('img/fondo-min.jpg');">
-          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
+      
     </div>
-
-  <!--  <hr>
+  </div>
+      <form id="loginForm">
+        <center><a href="http://developers.meraki.com"><img src="./img/logo.png" width="50%"/></a></center>
+        <br>
+        <fieldset>
+          <input id="name" placeholder="Nombre" type="text" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+          <input id="email" placeholder="Correo Electrónico" type="email" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+          <input id="company" placeholder="Número Teléfonico" type="text" tabindex="3">
+        </fieldset>
+		 <input type="checkbox" name="terminos" id="ter" value="" required> <span data-toggle="modal" data-target="#myModal">Acepto los terminos y condiciones del servicio</span><br><br>
+        <fieldset>
+          <button type="submit" onclick="insertTask()">Acceder a Internet</button>
+        </fieldset>
+		
+        <!--<p class="copyright">Sample by <a href="http://www.InternetOfLEGO.com" target="_blank" title="Internet of LEGO">Internet of LEGO</a></p>-->
+      </form>
+    </div>
+    <hr>
     <h4>Debugging Stats</h4>
     <p><label>Base Grant URL: </label><label id="baseGrantURL"></label></p>
     <p><label>User Continue URL: </label><label id="userContinueURL"></label></p>
     <p><label>Client IP: </label><label id="clientIP"></label></p>
     <p><label>Client MAC: </label><label id="clientMAC"></label></p>
-    <p><label>Access Point MAC: </label><label id="nodeMAC"></label></p>-->
-
-    <script src="vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="js/main.js"></script>
+    <p><label>Access Point MAC: </label><label id="nodeMAC"></label></p>
+   
 	<script src="./js/meraki.js"></script>
 </html>
-
