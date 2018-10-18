@@ -38,7 +38,7 @@
 	 var arrayData = arrayJSON(nombre,telefono,correo);
 	    
 	if (nombre == "" || telefono == "" || correo == "" || terminos == false){
-		alert("Faltan Campos por llenar");
+		alert("Por favor diligencie toda la información y acepte los terminos del servicio");
 	    }else{   
 	  firebase.database().ref('Usuarios/' + nombre).set({
     correo: correo,
